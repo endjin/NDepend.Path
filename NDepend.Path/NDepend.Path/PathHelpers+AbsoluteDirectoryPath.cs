@@ -7,7 +7,6 @@ using NDepend.Helpers;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       private sealed class AbsoluteDirectoryPath : AbsolutePathBase, IAbsoluteDirectoryPath {
          internal AbsoluteDirectoryPath(string pathString)
             : base(pathString) {
@@ -167,7 +166,6 @@ namespace NDepend.Path {
                return childrenDirectoriesPath.ToReadOnlyWrappedList();
             }
          }
-
       }
    }
 }

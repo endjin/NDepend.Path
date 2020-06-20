@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 
-
 namespace NDepend.Path
 {
-
    partial class PathHelpers {
-
       private abstract class RelativePathBase : PathBase, IRelativePath {
-
-         protected RelativePathBase(string pathString) : 
+         protected RelativePathBase(string pathString) :
             base(pathString) {
             Debug.Assert(pathString != null);
             Debug.Assert(pathString.Length > 0);
@@ -20,7 +16,6 @@ namespace NDepend.Path
          public override bool IsEnvVarPath { get { return false; } }
          public override bool IsVariablePath { get { return false; } }
          public override PathMode PathMode { get { return PathMode.Relative; } }
-
 
          IRelativeDirectoryPath IRelativePath.ParentDirectoryPath {
             get {
@@ -34,7 +29,6 @@ namespace NDepend.Path
                return parentPath.ToRelativeDirectoryPath();
             }
          }
-
 
          //
          //  Absolute/Relative pathString conversion

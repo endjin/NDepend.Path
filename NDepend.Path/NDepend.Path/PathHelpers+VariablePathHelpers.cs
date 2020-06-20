@@ -9,7 +9,6 @@ using NDepend.Helpers;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       static class VariablePathHelpers {
          #region Determine if a string is a variable path and extract variables!
          //-------------------------------------------------------------------------
@@ -43,7 +42,7 @@ namespace NDepend.Path {
                   break;
 
                case TryGetNextVariableResult.VariableNotFound:
-                  failureReason = @"A variable with the syntax $(variableName) must be defined at the beginning of the path string.";
+                  failureReason = "A variable with the syntax $(variableName) must be defined at the beginning of the path string.";
                   variables = null;
                   return false;
 
@@ -94,7 +93,7 @@ namespace NDepend.Path {
          SYNTAX_ERROR_FOUND:
             Debug.Assert(failureReasonTmp != null);
             Debug.Assert(failureReasonTmp.Length > 0);
-            failureReason = @"Variable syntax error : " + failureReasonTmp;
+            failureReason = "Variable syntax error : " + failureReasonTmp;
             variables = null;
             return false;
          }
@@ -141,7 +140,7 @@ namespace NDepend.Path {
             if (indexvariableNameEnd == indexVariableNameBegin) {
                indexOut = -1;
                variableName = null;
-               failureReasonTmp = @"Found variable with empty name at position " + indexBegin.ToString() + ".";
+               failureReasonTmp = "Found variable with empty name at position " + indexBegin.ToString() + ".";
                return TryGetNextVariableResult.ErrorSyntaxFound;
             }
 
@@ -151,7 +150,7 @@ namespace NDepend.Path {
             // Allowed char for variableName: Letter (upper/lower) / Number / Underscore
             if (!variableName.IsValidPathVariableName()) {
                indexOut = -1;
-               failureReasonTmp = @"Found variable with name " + PathHelpers.PathVariableBegin + variableName + PathHelpers.PathVariableEnd + ". A variable name must contain only upper/lower case letters, digits and underscore characters.";
+               failureReasonTmp = "Found variable with name " + PathHelpers.PathVariableBegin + variableName + PathHelpers.PathVariableEnd + ". A variable name must contain only upper/lower case letters, digits and underscore characters.";
                variableName = null;
                return TryGetNextVariableResult.ErrorSyntaxFound;
             }
@@ -284,6 +283,5 @@ namespace NDepend.Path {
             return sb.ToString();
          }
       }
-
    }
 }

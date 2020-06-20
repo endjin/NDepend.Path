@@ -4,7 +4,6 @@ using NDepend.Path;
 
 namespace NDepend.Test.Unit {
    public static class DirForTest {
-
       public static IAbsoluteDirectoryPath ExecutingAssemblyDir {
          get {
             // If this following line doesn't work, it is because of ShadowCopyCache with NUnit

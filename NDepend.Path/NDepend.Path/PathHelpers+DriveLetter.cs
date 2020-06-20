@@ -5,11 +5,8 @@ using System.IO;
 
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private sealed class DriveLetter : IDriveLetter {
-
          internal static bool IsValidDriveName(string driveName) {
             Debug.Assert(driveName != null);
 

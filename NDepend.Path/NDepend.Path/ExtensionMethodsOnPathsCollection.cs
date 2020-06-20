@@ -9,15 +9,11 @@ using System.Diagnostics.Contracts;
 // 18March2013 To let use internal methods like TryFindCommonPrefix!
 [assembly: InternalsVisibleTo("NDepend.Path.Tests, PublicKey=002400000480000094000000060200000024000052534131000400000100010089432d9316de5b15f31037868b09121c67261a74c277af636014bf90724d4f0ee22589af7c6f4f70f7f0a93b98f570372b08a3adacf2ee8abe20ffbec6d1a906f58493446ffbd20db9182bbcdba658ba05eca99b80a9357350f3540ddc1f9029091e4c2e1345b2d3682b7dbd5d8424a1d9b58e2905c99c4dba3eaf67645dd4c1")]
 
-
-
 namespace NDepend.Path {
-
    ///<summary>
    ///Extension methods helpers on collection of paths.
    ///</summary>
    public static class ExtensionMethodsOnPathsCollection {
-
       ///<summary>
       ///Determine if this collection1 and collection2 contain the same set of paths.
       ///</summary>
@@ -48,7 +44,6 @@ namespace NDepend.Path {
          return true;
       }
 
-
       ///<summary>
       ///Returns <i>true</i> if <paramref name="seq"/> contains <paramref name="path"/>.
       ///</summary>
@@ -65,7 +60,6 @@ namespace NDepend.Path {
          }
          return false;
       }
-
 
       ///<summary>
       ///Find the common root directory of all directories of this collection.
@@ -97,8 +91,6 @@ namespace NDepend.Path {
          commonRootDirectory = prefix.ToAbsoluteDirectoryPath();
          return true;
       }
-
-
       internal static bool TryFindCommonPrefix(IEnumerable<string> collection, bool ignoreCase, char separatorChar, out string commonPrefix) {
          Debug.Assert(collection != null);
          commonPrefix = null;
@@ -108,7 +100,7 @@ namespace NDepend.Path {
          }
 
          // If the list contains a path null -> no common commonPrefix
-         foreach (var str in array) { 
+         foreach (var str in array) {
             if (str == null || str.Length == 0) {
                return false;
             }

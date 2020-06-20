@@ -5,11 +5,8 @@ using System.Diagnostics;
 using NDepend.Helpers;
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private sealed class VariableDirectoryPath : VariablePathBase, IVariableDirectoryPath {
-
          internal VariableDirectoryPath(string pathString)
             : base(pathString) {
             Debug.Assert(pathString != null);
@@ -158,7 +155,5 @@ namespace NDepend.Path {
             return this.GetChildDirectoryWithName(directoryName);
          }
       }
-
    }
-
 }

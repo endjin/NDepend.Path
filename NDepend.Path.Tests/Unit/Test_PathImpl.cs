@@ -4,11 +4,9 @@ using NUnit.Framework;
 using NDepend.Test;
 using System.Linq;
 
-
 namespace NDepend.Path {
-   [TestFixture] 
+   [TestFixture]
    public class Test_PathImpl {
- 
       [SetUp]
       public void SetUp() {
          TestHelper.SetUpTests();
@@ -36,7 +34,7 @@ namespace NDepend.Path {
          IPath pathB = null;
          Assert.IsTrue(pathA.EqualsNullSupported(pathB));
 
-         var realPath = @"C:".ToAbsoluteDirectoryPath();
+         var realPath = "C:".ToAbsoluteDirectoryPath();
          pathA = realPath;
          pathB = null;
          Assert.IsFalse(pathA.EqualsNullSupported(pathB));
@@ -49,22 +47,18 @@ namespace NDepend.Path {
          pathB = realPath;
          Assert.IsTrue(pathA.EqualsNullSupported(pathB));
 
-         pathA = @".".ToRelativeDirectoryPath();
+         pathA = ".".ToRelativeDirectoryPath();
          pathB = realPath;
          Assert.IsFalse(pathA.EqualsNullSupported(pathB));
       }
-      
-
 
       [Test]
       public void ForbiddenCharInPath() {
          Assert.IsTrue(PathHelpers.ForbiddenCharInPath.Contains('|'));
       }
 
-
       [Test]
       public void Test_HasParentDirBasePath() {
-
          Assert.IsFalse(@"E:\".ToAbsoluteDirectoryPath().HasParentDirectory);
          Assert.IsFalse(@"E:\Dir1\..".ToAbsoluteDirectoryPath().HasParentDirectory);
          Assert.IsTrue(@"E:\Dir1".ToAbsoluteDirectoryPath().HasParentDirectory);
@@ -90,17 +84,10 @@ namespace NDepend.Path {
          Assert.IsTrue(@".\Dir1\..\File.txt".ToRelativeDirectoryPath().HasParentDirectory);
       }
 
-
-
-
-
-
-
       [Test]
       public void Test_TryGetCommonRootDirectory() {
          IAbsoluteDirectoryPath commonRootAbsoluteDirectory = null;
 
-         
          var list = new List<IAbsoluteDirectoryPath>();
          Assert.IsFalse(list.TryGetCommonRootDirectory(out commonRootAbsoluteDirectory));
 
@@ -142,9 +129,9 @@ namespace NDepend.Path {
          Assert.IsTrue(list.TryGetCommonRootDirectory(out commonRootAbsoluteDirectory));
          Assert.IsTrue(commonRootAbsoluteDirectory.ToString() == @"C:\File");
 
-         list.Add(@"C:".ToAbsoluteDirectoryPath());
+         list.Add("C:".ToAbsoluteDirectoryPath());
          Assert.IsTrue(list.TryGetCommonRootDirectory(out commonRootAbsoluteDirectory));
-         Assert.IsTrue(commonRootAbsoluteDirectory.ToString() == @"C:");
+         Assert.IsTrue(commonRootAbsoluteDirectory.ToString() == "C:");
 
          // Test when the common root dir is not in the list
          list.Clear();
@@ -152,9 +139,7 @@ namespace NDepend.Path {
          list.Add(@"C:\File\Debug\Dir1\Dir2\Dir3".ToAbsoluteDirectoryPath());
          Assert.IsTrue(list.TryGetCommonRootDirectory(out commonRootAbsoluteDirectory));
          Assert.IsTrue(commonRootAbsoluteDirectory.ToString() == @"C:\File\Debug");
-
       }
-
 
 
    }

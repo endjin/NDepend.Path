@@ -3,7 +3,6 @@ using System;
 using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Represents a path to a file on file system.
    ///</summary>

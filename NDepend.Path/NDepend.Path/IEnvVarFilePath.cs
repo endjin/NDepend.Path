@@ -5,13 +5,11 @@ using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
 
-
    ///<summary>
    ///Represents a file path on file system, prefixed with an environment variable.
    ///</summary>
    [ContractClass(typeof(IEnvVarFilePathContract))]
    public interface IEnvVarFilePath : IFilePath, IEnvVarPath {
-
       ///<summary>
       ///Returns <see cref="EnvVarPathResolvingStatus"/>.<see cref="EnvVarPathResolvingStatus.Success"/> if this file path is prefixed with an environment variable that can be resolved into a drive letter or a UNC absolute file path.
       ///</summary>
@@ -100,5 +98,4 @@ namespace NDepend.Path {
       public abstract bool TryResolve(out IAbsolutePath pathResolved, out string failureReason);
       public abstract string EnvVar { get; }
    }
-
 }

@@ -3,16 +3,11 @@ using System;
 using System.Diagnostics;
 using System.Xml;
 
-
-
 namespace NDepend.Path {
-
    partial class PathHelpers {
 
 
-
       private abstract class PathBase : IPath {
-         
          //
          //  Ctor
          //
@@ -25,7 +20,6 @@ namespace NDepend.Path {
             var pathStringNormalized = AbsoluteRelativePathHelpers.NormalizeAndResolveInnerSpecialDir(pathString);
             m_PathString = pathStringNormalized;
          }
-
 
          //
          //  Private and immutable states
@@ -42,7 +36,6 @@ namespace NDepend.Path {
          public abstract PathMode PathMode { get; }
 
          public abstract IDirectoryPath ParentDirectoryPath { get; }
-         
 
          //
          // ParentDirectoryPath
@@ -52,7 +45,6 @@ namespace NDepend.Path {
                return MiscHelpers.HasParentDirectory(m_PathString);
             }
          }
-
 
          public bool IsChildOf(IDirectoryPath parentDirectory) {
             Debug.Assert(parentDirectory != null);
@@ -75,8 +67,6 @@ namespace NDepend.Path {
             return thisPathLowerCase.IndexOf(parentPathLowerCase) == 0;
          }
 
-
-
          //
          // Comparison
          //
@@ -92,7 +82,6 @@ namespace NDepend.Path {
             return String.Compare(this.m_PathString, path.ToString(), true) == 0;
          }
 
-
          public bool NotEquals(object obj) {
             return !Equals(obj);
          }
@@ -106,8 +95,6 @@ namespace NDepend.Path {
             return false;
          }
 
-
-
          //
          //  GetHashCode() when pathString is key in Dictionnary
          //
@@ -117,8 +104,6 @@ namespace NDepend.Path {
                (this.IsFilePath ? 1457 : 3461);
          }
 
-
- 
 
       }
    }

@@ -13,7 +13,6 @@ using NDepend.Path;
 namespace NDepend.Helpers.Network {
    internal static class UNCNetworkHelper {
 
-
       internal static IAbsoluteDirectoryPath[] GetExistingUNCShares() {
          try {
             var list = new List<IAbsoluteDirectoryPath>();
@@ -103,7 +102,6 @@ namespace NDepend.Helpers.Network {
 
 
       private sealed class ShareInfo {
-
          internal ShareInfo(Win32MethodsNetwork.SHARE_INFO_1 info) {
             m_Info = info;
          }

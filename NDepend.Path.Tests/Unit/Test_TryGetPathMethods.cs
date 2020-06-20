@@ -2,23 +2,18 @@
 using NUnit.Framework;
 
 namespace NDepend.Path {
-
    [TestFixture]
    public class Test_TryGetPathMethods {
-
       [SetUp]
       public void SetUp() {
          TestHelper.SetUpTests();
       }
 
-  
-
-
-      [TestCase(@"C:", PathMode.Absolute)]
+      [TestCase("C:", PathMode.Absolute)]
       [TestCase(@"\\Server\Share", PathMode.Absolute)]
-      [TestCase(@"..", PathMode.Relative)]
-      [TestCase(@"%ENVAR%", PathMode.EnvVar)]
-      [TestCase(@"$(Var)", PathMode.Variable)]
+      [TestCase("..", PathMode.Relative)]
+      [TestCase("%ENVAR%", PathMode.EnvVar)]
+      [TestCase("$(Var)", PathMode.Variable)]
       public void Test_TryGetAbsolute_OK(string pathString, PathMode pathMode) {
          string failureReason;
 
@@ -45,7 +40,6 @@ namespace NDepend.Path {
          IDirectoryPath directoryPath;
          Assert.IsTrue(pathString.TryGetDirectoryPath(out directoryPath));
          Assert.IsTrue(pathString.TryGetDirectoryPath(out directoryPath, out failureReason));
-
 
          var pathStringFile = pathString + @"\File.txt";
 
@@ -80,10 +74,6 @@ namespace NDepend.Path {
          Assert.IsFalse(pathString.TryGetFilePath(out filePath, out failureReason));
       }
 
-
-
-
-
       [TestCase((string)null, "The parameter pathString is null.")]
       [TestCase("", "The parameter pathString is empty.")]
       public void Test_Null(string pathString, string error) {
@@ -113,7 +103,6 @@ namespace NDepend.Path {
          Assert.IsFalse(pathString.TryGetDirectoryPath(out directoryPath));
          Assert.IsFalse(pathString.TryGetDirectoryPath(out directoryPath, out failureReason));
          Assert.IsTrue(failureReason == error);
-
 
          IAbsoluteFilePath absoluteFilePath;
          Assert.IsFalse(pathString.TryGetAbsoluteFilePath(out absoluteFilePath));

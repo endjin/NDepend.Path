@@ -4,13 +4,11 @@ using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
 
-
    ///<summary>
    ///Represents an absolute path to a file or directory on file system.
    ///</summary>
    [ContractClass(typeof(IAbsolutePathContract))]
    public interface IAbsolutePath : IPath {
-
       ///<summary>
       ///Gets the <see cref="AbsolutePathKind"/> value for this path.
       ///</summary>
@@ -66,7 +64,7 @@ namespace NDepend.Path {
       ///<summary>
       ///Gets a value indicating whether a relative path representing this path can be computed from <paramref name="pivotDirectory"/>.
       ///</summary>
-      ///<remarks> 
+      ///<remarks>
       ///A relative path cannot be computed if <paramref name="pivotDirectory"/> is not on the same drive as this absolute path's drive.
       ///</remarks>
       ///<param name="pivotDirectory">The pivot directory from which the absolute path should be computed.</param>
@@ -76,7 +74,7 @@ namespace NDepend.Path {
       ///<summary>
       ///Gets a value indicating whether a relative path representing this path can be computed from <paramref name="pivotDirectory"/>.
       ///</summary>
-      ///<remarks> 
+      ///<remarks>
       ///A relative path cannot be computed if <paramref name="pivotDirectory"/> is not on the same drive as this absolute path's drive.
       ///</remarks>
       ///<param name="pivotDirectory">The pivot directory from which the absolute path should be computed.</param>
@@ -94,11 +92,8 @@ namespace NDepend.Path {
       new IAbsoluteDirectoryPath ParentDirectoryPath { get; }
    }
 
-
-
    [ContractClassFor(typeof(IAbsolutePath))]
    abstract class IAbsolutePathContract : IAbsolutePath {
-      
       public AbsolutePathKind Kind {
          get { throw new NotImplementedException(); ; }
       }
@@ -160,7 +155,6 @@ namespace NDepend.Path {
             throw new NotImplementedException();
          }
       }
-
 
       public abstract bool IsChildOf(IDirectoryPath parentDirectory);
       public abstract bool IsAbsolutePath { get; }

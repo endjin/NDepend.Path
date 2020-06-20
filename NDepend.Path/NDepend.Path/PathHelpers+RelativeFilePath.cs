@@ -3,7 +3,6 @@ using System.Diagnostics;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       private sealed class RelativeFilePath : RelativePathBase, IRelativeFilePath {
          internal RelativeFilePath(string pathString)
             : base(pathString) {
@@ -11,7 +10,6 @@ namespace NDepend.Path {
             Debug.Assert(pathString.Length > 0);
             Debug.Assert(pathString.IsValidRelativeFilePath());
          }
-
 
          //
          //  File Name and File Name Extension
@@ -33,7 +31,6 @@ namespace NDepend.Path {
          public override bool IsDirectoryPath { get { return false; } }
          public override bool IsFilePath { get { return true; } }
 
-
          //
          //  Absolute/Relative pathString conversion
          //
@@ -51,10 +48,6 @@ namespace NDepend.Path {
          public override IAbsolutePath GetAbsolutePathFrom(IAbsoluteDirectoryPath path) {
             return (this as IRelativeFilePath).GetAbsolutePathFrom(path);
          }
-
-
-
-
 
          //
          //  Path Browsing facilities
@@ -80,7 +73,7 @@ namespace NDepend.Path {
 
          public IRelativeFilePath UpdateExtension(string newExtension) {
             // All these 3 assertions have been checked by contract!
-            Debug.Assert(newExtension != null); 
+            Debug.Assert(newExtension != null);
             Debug.Assert(newExtension.Length >= 2);
             Debug.Assert(newExtension[0] == '.');
             string pathString = PathBrowsingHelpers.UpdateExtension(this, newExtension);
@@ -108,7 +101,6 @@ namespace NDepend.Path {
             Debug.Assert(newExtension[0] == '.');
             return this.UpdateExtension(newExtension);
          }
-
 
       }
    }

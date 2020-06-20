@@ -5,13 +5,11 @@ using System.IO;
 
 namespace NDepend.Path {
 
-
    ///<summary>
    ///Represents a drive on file system.
    ///</summary>
    [ContractClass(typeof(IDriveLetterContract))]
    public interface IDriveLetter {
-
       ///<summary>
       ///Returns the letter character of this drive.
       ///</summary>

@@ -5,11 +5,8 @@ using System.Diagnostics;
 using NDepend.Helpers;
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private sealed class VariableFilePath : VariablePathBase, IVariableFilePath {
-
          internal VariableFilePath(string pathString)
             : base(pathString) {
             Debug.Assert(pathString != null);
@@ -19,7 +16,6 @@ namespace NDepend.Path {
 
          public override bool IsDirectoryPath { get { return false; } }
          public override bool IsFilePath { get { return true; } }
-
 
          //
          //  File Name and File Name Extension
@@ -34,8 +30,6 @@ namespace NDepend.Path {
             Debug.Assert(extension[0] == '.');
             return FileNameHelpers.HasExtension(m_PathString, extension);
          }
-
-
 
          //
          // Path resolving
@@ -80,7 +74,6 @@ namespace NDepend.Path {
                   return false;
             }
          }
-   
 
          public override VariablePathResolvingStatus TryResolve(IEnumerable<KeyValuePair<string, string>> variablesValues, out IAbsolutePath pathResolved) {
             IAbsoluteFilePath pathFileResolved;
@@ -102,9 +95,6 @@ namespace NDepend.Path {
             pathResolved = pathFileResolved;
             return b;
          }
-
-
-
 
          //
          //  Path Browsing facilities
@@ -158,9 +148,6 @@ namespace NDepend.Path {
             return this.UpdateExtension(newExtension);
          }
 
-
       }
-
    }
-
 }

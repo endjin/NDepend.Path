@@ -4,9 +4,7 @@ using System;
 
 namespace NDepend.Path {
 
-
    partial class PathHelpers {
-
       private sealed class AbsoluteFilePath : AbsolutePathBase, IAbsoluteFilePath {
          internal AbsoluteFilePath(string pathString)
             : base(pathString) {
@@ -140,7 +138,6 @@ namespace NDepend.Path {
                return new FileInfo(m_PathString);
             }
          }
-
 
 
 

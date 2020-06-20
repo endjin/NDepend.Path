@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       private sealed class RelativeDirectoryPath : RelativePathBase, IRelativeDirectoryPath {
          internal RelativeDirectoryPath(string pathString)
             : base(pathString) {
@@ -109,7 +108,6 @@ namespace NDepend.Path {
             Debug.Assert(directoryName.Length > 0); // Enforced by contracts
             return this.GetChildDirectoryWithName(directoryName);
          }
-
 
       }
    }

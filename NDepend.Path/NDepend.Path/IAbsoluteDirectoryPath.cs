@@ -2,11 +2,8 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.IO;
-using NDepend.Helpers;
-
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Represents an absolute path to a directory on file system.
    ///</summary>
@@ -16,7 +13,6 @@ namespace NDepend.Path {
    ///</remarks>
    [ContractClass(typeof(IAbsoluteDirectoryPathContract))]
    public interface IAbsoluteDirectoryPath : IDirectoryPath, IAbsolutePath {
-
       ///<summary>
       ///Returns a DirectoryInfo object representing this absolute directory path.
       ///</summary>
@@ -38,8 +34,6 @@ namespace NDepend.Path {
       ///<seealso cref="P:NDepend.Path.IAbsolutePath.Exists"/>
       IReadOnlyList<IAbsoluteDirectoryPath> ChildrenDirectoriesPath { get; }
 
-
-      
       ///<summary>
       ///Returns a new absolute file path representing a file with name <paramref name="fileName"/>, located in the parent's directory of this directory.
       ///</summary>
@@ -48,7 +42,6 @@ namespace NDepend.Path {
       ///<exception cref="InvalidOperationException">This absolute directory path doesn't have a parent directory.</exception>
       new IAbsoluteFilePath GetBrotherFileWithName(string fileName);
 
-
       ///<summary>
       ///Returns a new absolute directory path representing a directory with name <paramref name="directoryName"/>, located in the parent's directory of this directory.
       ///</summary>
@@ -56,7 +49,6 @@ namespace NDepend.Path {
       ///<param name="directoryName">The brother directory name.</param>
       ///<exception cref="InvalidOperationException">This absolute directory path doesn't have a parent directory.</exception>
       new IAbsoluteDirectoryPath GetBrotherDirectoryWithName(string directoryName);
-
 
       ///<summary>
       ///Returns a new absolute file path representing a file with name <paramref name="fileName"/>, located in this directory.
@@ -84,7 +76,6 @@ namespace NDepend.Path {
       ///<returns>A new relative directory path representing this directory relative to <paramref name="pivotDirectory"/>.</returns>
       new IRelativeDirectoryPath GetRelativePathFrom(IAbsoluteDirectoryPath pivotDirectory);
    }
-
 
    [ContractClassFor(typeof(IAbsoluteDirectoryPath))]
    abstract class IAbsoluteDirectoryPathContract : IAbsoluteDirectoryPath {
@@ -134,7 +125,6 @@ namespace NDepend.Path {
 
       public IAbsoluteDirectoryPath ParentDirectoryPath {
          get {
-
             throw new NotImplementedException();
          }
       }
@@ -170,5 +160,4 @@ namespace NDepend.Path {
       public abstract bool OnSameVolumeThan(IAbsolutePath pathAbsoluteOther);
       public abstract bool Exists { get; }
    }
-
 }

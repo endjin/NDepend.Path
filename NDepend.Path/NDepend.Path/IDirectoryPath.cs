@@ -2,7 +2,6 @@
 using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Represents a path to a directory on file system.
    ///</summary>
@@ -12,7 +11,6 @@ namespace NDepend.Path {
    ///</remarks>
    [ContractClass(typeof(IDirectoryPathContract))]
    public interface IDirectoryPath : IPath {
-
       ///<summary>
       ///Gets a string representing the directory name.
       ///</summary>

@@ -2,7 +2,6 @@
 
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Defines a path mode, absolute, relative or prefixed with an environment variable.
    ///</summary>

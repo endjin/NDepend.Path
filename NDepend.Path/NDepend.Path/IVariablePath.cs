@@ -1,5 +1,4 @@
 ﻿
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
@@ -7,14 +6,11 @@ using NDepend.Helpers;
 
 namespace NDepend.Path {
 
-   
-
    ///<summary>
    ///Represents a path containing variable(s) defined with the syntax (case-insensitive) <i>$(VariableName)</i>. Such path must be prefixed with a variable and can then contain more variables.
    ///</summary>
    [ContractClass(typeof(IVariablePathContract))]
    public interface IVariablePath : IPath {
-
       ///<summary>
       ///Returns <see cref="VariablePathResolvingStatus"/>.<see cref="VariablePathResolvingStatus.Success"/> if <see cref="AllVariables"/> of this path can be resolved from <paramref name="variablesValues"/> cref="variablesValues"/> and the path can be resolved into a drive letter or a UNC absolute path.
       ///</summary>
@@ -61,10 +57,8 @@ namespace NDepend.Path {
       new IVariableDirectoryPath ParentDirectoryPath { get; }
    }
 
-
    [ContractClassFor(typeof(IVariablePath))]
    abstract class IVariablePathContract : IVariablePath {
-
       public VariablePathResolvingStatus TryResolve(IEnumerable<KeyValuePair<string,string>> variablesValues, out IAbsolutePath pathResolved) {
          Contract.Requires(variablesValues != null, "variablesValues must not be null");
          throw new NotImplementedException();
@@ -114,6 +108,5 @@ namespace NDepend.Path {
       public abstract IDirectoryPath ParentDirectoryPath { get; }
       public abstract bool HasParentDirectory { get; }
       public abstract bool NotEquals(object obj);
-
    }
 }

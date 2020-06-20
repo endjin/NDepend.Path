@@ -4,7 +4,6 @@ using System.IO;
 
 namespace NDepend.Path {
 
-
    ///<summary>
    ///Represents an absolute path to a file on file system.
    ///</summary>
@@ -14,7 +13,6 @@ namespace NDepend.Path {
    ///</remarks>
    [ContractClass(typeof(IAbsoluteFilePathContract))]
    public interface IAbsoluteFilePath : IFilePath, IAbsolutePath {
-
       ///<summary>
       ///Returns a FileInfo object corresponding to this absolute file path.
       ///</summary>
@@ -32,8 +30,6 @@ namespace NDepend.Path {
       ///<exception cref="ArgumentException"><paramref name="pivotDirectory"/> is not on the same drive as this file's drive.</exception>
       ///<returns>A new relative file path representing this file relative to <paramref name="pivotDirectory"/>.</returns>
       new IRelativeFilePath GetRelativePathFrom(IAbsoluteDirectoryPath pivotDirectory);
-
-
 
       ///<summary>
       ///Returns a new absolute file path refering to a file with name <paramref name="fileName"/>, located in the same directory as this file.
@@ -59,10 +55,8 @@ namespace NDepend.Path {
       new IAbsoluteFilePath UpdateExtension(string newExtension);
    }
 
-
    [ContractClassFor(typeof(IAbsoluteFilePath))]
    abstract class IAbsoluteFilePathContract : IAbsoluteFilePath {
-
       public FileInfo FileInfo {
          get { throw new NotImplementedException(); }
       }
@@ -96,7 +90,6 @@ namespace NDepend.Path {
          }
       }
 
-     
       IRelativeFilePath IAbsoluteFilePath.GetRelativePathFrom(IAbsoluteDirectoryPath pivotDirectory) {
          Contract.Requires(pivotDirectory != null, "pivotDirectory must not be null");
          throw new NotImplementedException();
@@ -118,7 +111,6 @@ namespace NDepend.Path {
       public bool HasExtension(string extension) {
          throw new NotImplementedException();
       }
-
 
       IFilePath IFilePath.GetBrotherFileWithName(string fileName) { throw new NotImplementedException(); }
       IDirectoryPath IFilePath.GetBrotherDirectoryWithName(string directoryName) { throw new NotImplementedException(); }

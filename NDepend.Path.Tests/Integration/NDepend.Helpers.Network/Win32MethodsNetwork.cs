@@ -5,7 +5,6 @@ using System.Runtime.InteropServices;
 
 namespace NDepend.Helpers.Interop {
 
-
    //
    // 20Jan2014: Code extracted from https://code.google.com/p/lanexchange/
    //            and refactored for our needs!

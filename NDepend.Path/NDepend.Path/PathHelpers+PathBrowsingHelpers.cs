@@ -4,9 +4,7 @@ using System.Diagnostics;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       private static class PathBrowsingHelpers {
-
 
          internal static IFilePath GetBrotherFileWithName(IPath path, string fileName) {
             Debug.Assert(path != null);

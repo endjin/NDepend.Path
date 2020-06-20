@@ -3,9 +3,7 @@
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       static class UNCPathHelper {
-
          internal static bool StartLikeUNCPath(string pathStringNormalized) {
             Debug.Assert(pathStringNormalized != null);
             return pathStringNormalized.IndexOf(MiscHelpers.TWO_DIR_SEPARATOR_STRING) == 0;
@@ -64,7 +62,7 @@ namespace NDepend.Path {
          //
          // This two methods lets do work with UNCPath by converting them temporarily to drive letter path (easier to handle!)
          //
-         internal const string FAKE_DRIVE_LETTER_PREFIX = @"C:";
+         internal const string FAKE_DRIVE_LETTER_PREFIX = "C:";
          internal static string TranformUNCIntoDriveLetter(string uncNormalizedPath, out string uncServerShareStart) {
             Debug.Assert(uncNormalizedPath != null);
             Debug.Assert(uncNormalizedPath.IsNormalized());

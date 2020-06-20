@@ -8,13 +8,11 @@ using NDepend.Helpers;
 namespace NDepend.Path {
 
 
-
    ///<summary>
    ///Represents a file path on file system, prefixed with an environment variable.
    ///</summary>
    [ContractClass(typeof(IVariableFilePathContract))]
    public interface IVariableFilePath : IFilePath, IVariablePath {
-
       ///<summary>
       ///Returns <see cref="VariablePathResolvingStatus"/>.<see cref="VariablePathResolvingStatus.Success"/> if <see cref="IVariablePath.AllVariables"/> of this path can be resolved from <paramref name="variablesValues"/> and the path can be resolved into a drive letter or a UNC absolute file path.
       ///</summary>
@@ -124,5 +122,4 @@ namespace NDepend.Path {
       public abstract EnvVarPathResolvingStatus TryResolve(out IAbsolutePath pathResolved);
       public abstract bool TryResolve(out IAbsolutePath pathResolved, out string failureReason);
    }
-
 }

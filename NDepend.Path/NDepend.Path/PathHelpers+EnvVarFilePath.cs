@@ -3,11 +3,8 @@ using System.Diagnostics;
 
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private sealed class EnvVarFilePath : EnvVarPathBase, IEnvVarFilePath {
-
          internal EnvVarFilePath(string pathString)
             : base(pathString) {
             Debug.Assert(pathString != null);
@@ -136,9 +133,6 @@ namespace NDepend.Path {
             return this.UpdateExtension(newExtension);
          }
 
-
       }
-
    }
-
 }

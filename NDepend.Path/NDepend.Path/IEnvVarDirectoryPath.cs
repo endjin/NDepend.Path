@@ -4,13 +4,11 @@ using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
 
-
    ///<summary>
    ///Represents a directory path on file system, prefixed with an environment variable.
    ///</summary>
    [ContractClass(typeof(IEnvVarDirectoryPathContract))]
    public interface IEnvVarDirectoryPath : IDirectoryPath, IEnvVarPath {
-
       ///<summary>
       ///Returns <see cref="EnvVarPathResolvingStatus"/>.<see cref="EnvVarPathResolvingStatus.Success"/> if this directory path is prefixed with an environment variable that can be resolved into a drive letter or a UNC absolute directory path.
       ///</summary>
@@ -23,14 +21,13 @@ namespace NDepend.Path {
       ///<param name="pathDirectoryResolved">It is the absolute directory path resolved returned by this method.</param>
       ///<param name="failureReason">If false is returned, failureReason contains the plain english description of the failure.</param>
       bool TryResolve(out IAbsoluteDirectoryPath pathDirectoryResolved, out string failureReason);
-      
+
       ///<summary>
       ///Returns a new file path prefixed with an environment variable, representing a file with name <paramref name="fileName"/>, located in the parent's directory of this directory.
       ///</summary>
       ///<param name="fileName">The brother file name.</param>
       ///<exception cref="InvalidOperationException">This relative directory path doesn't have a parent directory.</exception>
       new IEnvVarFilePath GetBrotherFileWithName(string fileName);
-
 
       ///<summary>
       ///Returns a new directory path prefixed with an environment variable, representing a directory with name <paramref name="directoryName"/>, located in the parent's directory of this directory.
@@ -45,7 +42,6 @@ namespace NDepend.Path {
       ///<param name="fileName">The child file name.</param>
       new IEnvVarFilePath GetChildFileWithName(string fileName);
 
-
       ///<summary>
       ///Returns a new directory path prefixed with an environment variable, representing a directory with name <paramref name="directoryName"/>, located in this directory.
       ///</summary>
@@ -53,10 +49,8 @@ namespace NDepend.Path {
       new IEnvVarDirectoryPath GetChildDirectoryWithName(string directoryName);
    }
 
-
    [ContractClassFor(typeof(IEnvVarDirectoryPath))]
    internal abstract class IEnvVarDirectoryPathContract : IEnvVarDirectoryPath {
-
       public EnvVarPathResolvingStatus TryResolve(out IAbsoluteDirectoryPath pathDirectoryResolved) {
          throw new NotImplementedException();
       }
@@ -89,7 +83,6 @@ namespace NDepend.Path {
          throw new NotImplementedException();
       }
 
-
       IFilePath IDirectoryPath.GetBrotherFileWithName(string fileName) { throw new NotImplementedException(); }
       IDirectoryPath IDirectoryPath.GetBrotherDirectoryWithName(string directoryName) { throw new NotImplementedException(); }
       IFilePath IDirectoryPath.GetChildFileWithName(string fileName) { throw new NotImplementedException(); }
@@ -112,5 +105,4 @@ namespace NDepend.Path {
       public abstract bool TryResolve(out IAbsolutePath pathResolved, out string failureReason);
       public abstract string EnvVar { get; }
    }
-
 }

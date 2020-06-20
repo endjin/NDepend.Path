@@ -3,13 +3,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
-
 namespace NDepend.Path {
    partial class PathHelpers {
 
-
       private static class AbsoluteRelativePathHelpers {
-
          internal const string CURRENT_DIR_SINGLEDOT = ".";
          internal const string PARENT_DIR_DOUBLEDOT = "..";
 
@@ -39,13 +36,12 @@ namespace NDepend.Path {
             Debug.Assert(pathFrom != null);
             Debug.Assert(pathTo != null);
             Debug.Assert(pathTo.IsRelativePath);
-           
+
             if (pathFrom.Kind == AbsolutePathKind.DriveLetter) {
                // Only work with Directory 
                if (pathTo.IsFilePath) { pathTo = pathTo.ParentDirectoryPath; }
                return TryGetAbsolutePath(pathFrom.ToString(), pathTo.ToString(), out pathResult, out failureReason);
             }
-
 
             //
             // Special case when a relative path is asked from a UNC path like ".." from "\\Server\Share".
@@ -74,9 +70,6 @@ namespace NDepend.Path {
 
             return true;
          }
-
-
-
 
          #region GetPathRelativeTo()  /  TryGetAbsolutePath()
          //--------------------------------------
@@ -132,8 +125,6 @@ namespace NDepend.Path {
             string RelativePath = String.Join(MiscHelpers.DIR_SEPARATOR_STRING, relativeParts);
             return RelativePath;
          }
-
-
 
          //
          //  TryGetAbsolutePath
@@ -193,9 +184,6 @@ namespace NDepend.Path {
          }
          #endregion GetPathRelativeTo()  /  TryGetAbsolutePath()
 
-
-
-
          #region Is an Absolute/Relative path
          //-----------------------------------------------------
          //
@@ -228,14 +216,11 @@ namespace NDepend.Path {
             return true;
          }
 
-
-
-
          internal static bool IsARelativePath(string pathStringNormalized) {
             Debug.Assert(pathStringNormalized != null);
             Debug.Assert(pathStringNormalized.Length > 0);
             Debug.Assert(pathStringNormalized.IsNormalized());
-            
+
             // First char must be a dot
             if (pathStringNormalized[0] != '.') { return false; }
             if (pathStringNormalized.Length == 1) { return true; }
@@ -251,10 +236,6 @@ namespace NDepend.Path {
             return thirdChar == MiscHelpers.DIR_SEPARATOR_CHAR;
          }
          #endregion Is an Absolute/Relative path
-
-
-
-
 
          #region  Inner Special dir handling
          //------------------------------------------------
@@ -279,7 +260,6 @@ namespace NDepend.Path {
             Debug.Assert(b); // Coz already verified in a IsValidPath !
             return pathStringNormalizedResolved;
          }
-
 
          internal static bool ContainsInnerSpecialDir(string path) {
             // These cases should have been handled by the calling method and cannot be handled
@@ -312,7 +292,6 @@ namespace NDepend.Path {
             return false;
          }
 
-
          internal static bool TryResolveInnerSpecialDir(string pathStringNormalized, out string pathResolved, out string failureReason) {
             // These cases should have been handled by the calling method and cannot be handled
             Debug.Assert(pathStringNormalized != null);
@@ -341,7 +320,6 @@ namespace NDepend.Path {
                pathStringNormalized = UNCPathHelper.TranformUNCIntoDriveLetter(pathStringNormalized, out uncServerShareStart);
             }
 
-
             //
             // Prepare the algo variables...
             //
@@ -352,7 +330,6 @@ namespace NDepend.Path {
             if (bIsUNCPath) {
                rootDir = uncServerShareStart;
             }
-
 
             //
             // ... and call the algo!
@@ -366,7 +343,7 @@ namespace NDepend.Path {
                   Debug.Assert(result == TryResolveInnerSpecialDirResult.Success);
                   break;
                case TryResolveInnerSpecialDirResult.ErrorParentOfRootDirResolved:
-                  failureReason = @"The pathString {" + originalPathStringNormalized + @"} references the parent dir \..\ of the root dir {" + rootDir + "}, it cannot be resolved.";
+                  failureReason = "The pathString {" + originalPathStringNormalized + @"} references the parent dir \..\ of the root dir {" + rootDir + "}, it cannot be resolved.";
                   return false;
             }
 
@@ -382,15 +359,13 @@ namespace NDepend.Path {
             return true;
          }
 
-
-
          enum TryResolveInnerSpecialDirResult {
              Success,
              ErrorParentOfRootDirResolved
          }
 
          private static TryResolveInnerSpecialDirResult TryResolveInnerSpecialDirAlgo(
-               string[] pathDirs, 
+               string[] pathDirs,
                bool bPathIsRelative,
                out string pathResolved) {
             Debug.Assert(pathDirs != null);
@@ -469,7 +444,6 @@ namespace NDepend.Path {
             foreach (string dir in dirStack) {
                stringBuilder.Insert(0, MiscHelpers.DIR_SEPARATOR_STRING);
                stringBuilder.Insert(0, dir);
-
             }
             // Remove the last DIR_SEPARATOR
             stringBuilder.Length = stringBuilder.Length - 1;
@@ -481,5 +455,4 @@ namespace NDepend.Path {
          #endregion Inner Special dir handling
       }
    }
-
 }

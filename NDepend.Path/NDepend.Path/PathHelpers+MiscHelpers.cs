@@ -4,7 +4,6 @@ using System.Diagnostics;
 
 namespace NDepend.Path {
    partial class PathHelpers {
-
       private static class MiscHelpers {
          internal readonly static char DIR_SEPARATOR_CHAR = System.IO.Path.DirectorySeparatorChar;
          internal readonly static string DIR_SEPARATOR_STRING = System.IO.Path.DirectorySeparatorChar.ToString();

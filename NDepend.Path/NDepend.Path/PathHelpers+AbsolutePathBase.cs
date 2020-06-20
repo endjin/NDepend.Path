@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
 
-
 namespace NDepend.Path {
-
    partial class PathHelpers {
 
-
       private abstract class AbsolutePathBase : PathBase, IAbsolutePath  {
-
          protected AbsolutePathBase(string pathString)
             : base(pathString) {
             Debug.Assert(pathString != null);
@@ -21,7 +17,6 @@ namespace NDepend.Path {
                Debug.Assert(AbsoluteRelativePathHelpers.IsAnAbsoluteDriveLetterPath(m_PathString));
                m_Kind = AbsolutePathKind.DriveLetter;
             }
-            
          }
 
          public override bool IsAbsolutePath { get { return true; } }
@@ -57,7 +52,6 @@ namespace NDepend.Path {
          private readonly AbsolutePathKind m_Kind;
          public AbsolutePathKind Kind { get { return m_Kind; } }
 
-
          //
          //  DriveLetter
          //
@@ -73,10 +67,6 @@ namespace NDepend.Path {
                return new DriveLetter(driveName);
             }
          }
-
-
-
-
 
          //
          // UNC  Universal Naming Convention  http://compnetworking.about.com/od/windowsnetworking/g/unc-name.htm 
@@ -117,9 +107,6 @@ namespace NDepend.Path {
             }
          }
 
-
-
-
          public bool OnSameVolumeThan(IAbsolutePath pathAbsoluteOther) {
             Debug.Assert(pathAbsoluteOther != null); // Enforced by contract
             if (m_Kind != pathAbsoluteOther.Kind) { return false; }
@@ -134,9 +121,6 @@ namespace NDepend.Path {
             }
          }
 
-
-
-
          //
          // These methods are abstract at this level and are implemented at File and Directory level!
          //
@@ -144,7 +128,6 @@ namespace NDepend.Path {
          public abstract bool CanGetRelativePathFrom(IAbsoluteDirectoryPath pivotDirectory);
          public abstract bool CanGetRelativePathFrom(IAbsoluteDirectoryPath pivotDirectory, out string failureReason);
          public abstract bool Exists { get; }
-
       }
    }
 }

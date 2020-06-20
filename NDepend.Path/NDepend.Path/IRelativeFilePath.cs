@@ -2,7 +2,6 @@
 using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Represents a relative file path.
    ///</summary>
@@ -11,7 +10,6 @@ namespace NDepend.Path {
    ///</remarks>
    [ContractClass(typeof(IRelativeFilePathContract))]
    public interface IRelativeFilePath : IFilePath, IRelativePath {
-
       ///<summary>
       ///Returns a new relative file path refering to a file with name <paramref name="fileName"/>, located in the same directory as this file.
       ///</summary>
@@ -24,13 +22,11 @@ namespace NDepend.Path {
       ///<param name="directoryName">The brother directory name.</param>
       new IRelativeDirectoryPath GetBrotherDirectoryWithName(string directoryName);
 
-
       ///<summary>
       ///Returns a new relative file path representing this file with its file name extension updated to <paramref name="newExtension"/>.
       ///</summary>
       ///<param name="newExtension">The new file extension. It must begin with a dot followed by one or many characters.</param>
       new IRelativeFilePath UpdateExtension(string newExtension);
-
 
       ///<summary>
       ///Resolve this relative file from <paramref name="pivotDirectory"/>. If this file is "..\Dir2\File.txt" and <paramref name="pivotDirectory"/> is "C:\Dir1\Dir3", the returned absolute file is "C:\Dir1\Dir2\File.txt".
@@ -40,7 +36,7 @@ namespace NDepend.Path {
       ///</remarks>
       ///<param name="pivotDirectory">The pivot directory from which the absolute path is computed.</param>
       ///<exception cref="ArgumentException">
-      ///An absolute path cannot be resolved from <paramref name="pivotDirectory"/>. 
+      ///An absolute path cannot be resolved from <paramref name="pivotDirectory"/>.
       ///This can happen for example if <paramref name="pivotDirectory"/> is "C:\Dir1" and this relative file path is "..\..\Dir2\File.txt".
       ///</exception>
       ///<returns>A new absolute file path representing this relative file resolved from <paramref name="pivotDirectory"/>.</returns>
@@ -73,7 +69,6 @@ namespace NDepend.Path {
          throw new NotImplementedException();
       }
 
-
       IAbsolutePath IRelativePath.GetAbsolutePathFrom(IAbsoluteDirectoryPath pivotDirectory) {
          throw new NotImplementedException();
       }
@@ -100,6 +95,5 @@ namespace NDepend.Path {
       public abstract string FileNameWithoutExtension { get; }
       public abstract string FileExtension { get; }
       public abstract bool HasExtension(string extension);
-
    }
 }

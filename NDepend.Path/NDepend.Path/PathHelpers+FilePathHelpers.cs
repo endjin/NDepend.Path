@@ -2,15 +2,10 @@
 using System;
 using System.Diagnostics;
 
-
 namespace NDepend.Path {
 
-   
-
    partial class PathHelpers {
-
       static class FileNameHelpers {
-
 
          //
          //  FileName and extension
@@ -29,7 +24,6 @@ namespace NDepend.Path {
             }
             Debug.Assert(fileName.Length - extension.Length >= 0);
             return fileName.Substring(0, fileName.Length - extension.Length);
-            
          }
 
          internal static string GetFileNameExtension(string path) {
@@ -55,8 +49,6 @@ namespace NDepend.Path {
             var pathExtension = GetFileNameExtension(path);
             return (String.Compare(pathExtension, extension, true /*ignoreCase*/) == 0);
          }
-
       }
-
    }
 }

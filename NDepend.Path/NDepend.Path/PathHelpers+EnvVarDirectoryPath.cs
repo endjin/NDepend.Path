@@ -3,11 +3,8 @@ using System.Diagnostics;
 
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private sealed class EnvVarDirectoryPath : EnvVarPathBase, IEnvVarDirectoryPath {
-
          internal EnvVarDirectoryPath(string pathString)
             : base(pathString) {
             Debug.Assert(pathString != null);
@@ -135,7 +132,5 @@ namespace NDepend.Path {
             return this.GetChildDirectoryWithName(directoryName);
          }
       }
-
    }
-
 }

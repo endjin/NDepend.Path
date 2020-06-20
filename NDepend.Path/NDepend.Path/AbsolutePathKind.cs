@@ -1,7 +1,4 @@
-﻿
-
-namespace NDepend.Path {
-
+﻿namespace NDepend.Path {
    ///<summary>
    ///Defines the kind of an absolute path.
    ///</summary>
@@ -20,5 +17,4 @@ namespace NDepend.Path {
       ///</remarks>
       UNC
    }
-
 }

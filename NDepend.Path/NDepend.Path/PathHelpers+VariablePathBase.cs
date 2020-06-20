@@ -9,11 +9,8 @@ using System.Linq;
 using NDepend.Helpers;
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private abstract class VariablePathBase : PathBase, IVariablePath {
-
 
          protected VariablePathBase(string pathString) :
             base(pathString) {
@@ -116,7 +113,7 @@ namespace NDepend.Path {
             IReadOnlyList<string> unresolvedVariablesUnused;
             var b = TryResolve(variablesValues, out pathStringResolved, out unresolvedVariablesUnused);
             Debug.Assert(b);
-            return @"All variable(s) have been resolved, but the resulting string {" + pathStringResolved + "} cannot be converted to an absolute " + fileOrDirectory + " path.";
+            return "All variable(s) have been resolved, but the resulting string {" + pathStringResolved + "} cannot be converted to an absolute " + fileOrDirectory + " path.";
          }
 
 

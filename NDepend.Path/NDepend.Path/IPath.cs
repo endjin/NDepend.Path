@@ -1,10 +1,8 @@
 ﻿
-
 using System;
 using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
-
    ///<summary>
    ///Represents a path, absolute or relative, to a file or to a directory.
    ///</summary>
@@ -14,7 +12,6 @@ namespace NDepend.Path {
    ///</remarks>
    [ContractClass(typeof(IPathContract))]
    public interface IPath {
-
 
       ///<summary>Gets a value indicating whether this path is an absolute path.</summary>
       ///<remarks>
@@ -32,7 +29,6 @@ namespace NDepend.Path {
       ///<returns><i>true</i> if this path is a relative path, else returns false.</returns>
       bool IsRelativePath { get; }
 
-
       ///<summary>Gets a value indicating whether this path is prefixed with an environment variable.</summary>
       ///<remarks>
       ///A path prefixed with an environment variable can be down-casted to <see cref="IEnvVarPath"/>.
@@ -48,7 +44,6 @@ namespace NDepend.Path {
       ///</remarks>
       ///<returns><i>true</i> if this path contains variable(s), else returns <i>false</i>.</returns>
       bool IsVariablePath { get; }
-
 
       ///<summary>Gets a value indicating whether this path is a directory path.</summary>
       ///<remarks>
@@ -66,7 +61,6 @@ namespace NDepend.Path {
       ///<returns><i>true</i> if this path is a file path, else returns <i>false</i>.</returns>
       bool IsFilePath { get; }
 
-
       ///<summary>
       ///Gets a value indicating this path mode as defined in the enumeration <see cref="PathMode"/>.
       ///</summary>
@@ -78,7 +72,7 @@ namespace NDepend.Path {
       ///Root directories representing a drive, like C: or D: don't have a parent directory path.
       ///Relative path like ".\" or "..\" don't have a parent directory path.
       ///Notice that a file path necessarily has a parent directory path.
-      ///</exception> 
+      ///</exception>
       IDirectoryPath ParentDirectoryPath { get; }
 
       ///<summary>
@@ -98,19 +92,16 @@ namespace NDepend.Path {
       ///<returns>true if this path has a parent directory path, else returns false.</returns>
       bool HasParentDirectory { get;  }
 
-
       ///<summary>Returns true if obj is null, is not an IPath, or is an IPath representing a different path than this path (case insensitive).</summary>
       ///<remarks>
       ///This method is the opposite of the IPath.Equals() method, overridden from System.Object.
       ///It can be used to make the negation in !Equals more obvious.
       ///</remarks>
       bool NotEquals(object obj);
-
    }
 
    [ContractClassFor(typeof(IPath))]
    abstract class IPathContract : IPath {
-
       public bool IsAbsolutePath {
          get { throw new NotImplementedException(); }
       }
@@ -123,11 +114,9 @@ namespace NDepend.Path {
          get { throw new NotImplementedException(); }
       }
 
-
       public bool IsFilePath {
          get { throw new NotImplementedException(); }
       }
-
 
       public PathMode PathMode {
          get { throw new NotImplementedException(); }

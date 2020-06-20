@@ -5,10 +5,8 @@ using NDepend.Test;
 using NUnit.Framework;
 
 namespace NDepend.Path {
-
    [TestFixture]
    public class Test_AbsolutePath_UNC_Access {
-
       [SetUp]
       public void SetUp() {
          TestHelper.SetUpTests();
@@ -18,7 +16,6 @@ namespace NDepend.Path {
 
       [Test]
       public void Test_UNCShare_Access() {
-
          var uncPaths = UNCNetworkHelper.GetExistingUNCShares();
          foreach(var uncPath in uncPaths) {
             Assert.IsTrue(uncPath.Exists);
@@ -41,11 +38,8 @@ namespace NDepend.Path {
             Directory.Delete(dirTODELETE.ToString());
             Assert.IsFalse(dirTODELETE.Exists);
          }
-
       }
 
-
    }
-
 }
 

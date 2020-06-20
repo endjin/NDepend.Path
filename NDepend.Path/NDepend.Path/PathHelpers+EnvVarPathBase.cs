@@ -6,11 +6,8 @@ using System.Diagnostics;
 
 
 namespace NDepend.Path {
-
    partial class PathHelpers {
-
       private abstract class EnvVarPathBase : PathBase, IEnvVarPath {
-
          protected EnvVarPathBase(string pathString) :
             base(pathString) {
             Debug.Assert(pathString != null);
@@ -107,9 +104,6 @@ namespace NDepend.Path {
                return parentPath.ToEnvVarDirectoryPath();
             }
          }
-
       }
-
    }
-
 }

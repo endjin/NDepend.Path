@@ -4,13 +4,11 @@ using System.Diagnostics.Contracts;
 
 namespace NDepend.Path {
 
-
    ///<summary>
-   ///Represents a relative path to a file or directory. 
+   ///Represents a relative path to a file or directory.
    ///</summary>
    [ContractClass(typeof(IRelativePathContract))]
    public interface IRelativePath : IPath {
-
       ///<summary>
       ///A new absolute path representing this relative path resolved from <paramref name="pivotDirectory"/>.
       ///</summary>
@@ -22,7 +20,7 @@ namespace NDepend.Path {
       ///</remarks>
       ///<param name="pivotDirectory">The pivot directory from which the absolute path is computed.</param>
       ///<exception cref="ArgumentException">
-      ///An absolute path cannot be resolved from <paramref name="pivotDirectory"/>. 
+      ///An absolute path cannot be resolved from <paramref name="pivotDirectory"/>.
       ///This can happen for example if <paramref name="pivotDirectory"/> is "C:\Dir1" and this relative path is "..\..\Dir2".
       ///</exception>
       ///<returns>A new absolute file path representing this relative file resolved from <paramref name="pivotDirectory"/>.</returns>
@@ -56,10 +54,8 @@ namespace NDepend.Path {
       new IRelativeDirectoryPath ParentDirectoryPath { get; }
    }
 
-
    [ContractClassFor(typeof(IRelativePath))]
    abstract class IRelativePathContract : IRelativePath {
-      
       public IAbsolutePath GetAbsolutePathFrom(IAbsoluteDirectoryPath pivotDirectory) {
          Contract.Requires(pivotDirectory != null, "pivotDirectory must not be null");
          throw new NotImplementedException();
@@ -81,7 +77,6 @@ namespace NDepend.Path {
             throw new NotImplementedException();
          }
       }
-
 
       public abstract bool IsChildOf(IDirectoryPath parentDirectory);
       public abstract bool IsAbsolutePath { get; }

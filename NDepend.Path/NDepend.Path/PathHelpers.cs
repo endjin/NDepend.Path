@@ -1,16 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Contracts;
 
-using NDepend.Helpers;
-
 namespace NDepend.Path {
-
    ///<summary>
    ///Contains extensions methods to obtain a path object from a string and to check that a string indeed represents a valid path.
    ///</summary>
    public static partial class PathHelpers {
-
 
 
       ///<summary>
@@ -30,13 +27,12 @@ namespace NDepend.Path {
       ///<summary>
       ///Path variables are formatted this way $(VariableName). Hence this getter returns the string "$(".
       ///</summary>
-      public static string PathVariableBegin { get { return @"$("; }}
+      public static string PathVariableBegin { get { return "$("; }}
 
       ///<summary>
       ///Path variables are formatted this way $(VariableName). Hence this getter returns the string ")".
       ///</summary>
-      public static string PathVariableEnd { get { return @")"; } }
-
+      public static string PathVariableEnd { get { return ")"; } }
 
       ///<summary>
       ///Returns <i>true</i> if <paramref name="pathVariableName"/> contains only upper/lower case letters, digits and underscore and has less than 1024 characters. In such case <paramref name="pathVariableName"/> is a valid path variable name.
@@ -73,9 +69,8 @@ namespace NDepend.Path {
          return true;
       }
 
-
       ///<summary>
-      ///Returns <paramref name="path"/>.ToString() is path is null, else returns the empty string. 
+      ///Returns <paramref name="path"/>.ToString() is path is null, else returns the empty string.
       ///</summary>
       ///<param name="path">The path reference.</param>
       public static string ToStringOrIfNullToEmptyString(this IPath path) {
@@ -83,9 +78,8 @@ namespace NDepend.Path {
          return path.ToString();
       }
 
-
       ///<summary>
-      ///Returns <i>true</i> if <paramref name="path"/> is not null, and <paramref name="path"/>.<see cref="IAbsolutePath.Exists"/> equals <i>true</i>. 
+      ///Returns <i>true</i> if <paramref name="path"/> is not null, and <paramref name="path"/>.<see cref="IAbsolutePath.Exists"/> equals <i>true</i>.
       ///</summary>
       ///<param name="path">The path reference.</param>
       public static bool IsNotNullAndExists(this IAbsolutePath path) {
@@ -94,7 +88,7 @@ namespace NDepend.Path {
       }
 
       ///<summary>
-      ///Returns <i>true</i> if <paramref name="path"/> and <paramref name="pathOther"/> are both <i>null</i>, or if <paramref name="path"/>.Equals(<paramref name="pathOther"/>). 
+      ///Returns <i>true</i> if <paramref name="path"/> and <paramref name="pathOther"/> are both <i>null</i>, or if <paramref name="path"/>.Equals(<paramref name="pathOther"/>).
       ///</summary>
       ///<param name="path">The first path.</param>
       ///<param name="pathOther">The scond path.</param>
@@ -103,8 +97,6 @@ namespace NDepend.Path {
          if (pathOther == null) { return false; }
          return path.Equals(pathOther);
       }
-      
-
 
       private const string PATH_STRING = "pathString";
       private const string FAILURE_PATHSTRING_IS_NULL = "The parameter pathString is null.";
@@ -127,7 +119,6 @@ namespace NDepend.Path {
          pathStringNormalized = pathStringNormalizedTmp;
          return true;
       }
-
 
       #region string to IPath extension methods
       //---------------------------------------------------
@@ -157,7 +148,6 @@ namespace NDepend.Path {
          Debug.Assert(absoluteFilePath != null);
          return absoluteFilePath;
       }
-
 
       ///<summary>
       ///Returns a new <see cref="IRelativeFilePath"/> object from this string.
@@ -226,7 +216,6 @@ namespace NDepend.Path {
          return variableFilePath;
       }
 
-
       ///<summary>
       ///Returns a new <see cref="IAbsoluteDirectoryPath"/> object from this string.
       ///</summary>
@@ -249,7 +238,6 @@ namespace NDepend.Path {
          return absoluteDirectoryPath;
       }
 
-
       ///<summary>
       ///Returns a new <see cref="IRelativeDirectoryPath"/> object from this string.
       ///</summary>
@@ -271,7 +259,6 @@ namespace NDepend.Path {
          Debug.Assert(relativeDirectoryPath != null);
          return relativeDirectoryPath;
       }
-
 
       ///<summary>
       ///Returns a new <see cref="IEnvVarDirectoryPath"/> object from this string.
@@ -296,8 +283,6 @@ namespace NDepend.Path {
          return envVarDirectoryPath;
       }
 
-
-
       ///<summary>
       ///Returns a new <see cref="IVariableDirectoryPath"/> object from this string.
       ///</summary>
@@ -319,7 +304,6 @@ namespace NDepend.Path {
          Debug.Assert(variableDirectoryPath != null);
          return variableDirectoryPath;
       }
-
 
       ///<summary>
       ///Returns a new <see cref="IDirectoryPath"/> object from this string.
@@ -365,10 +349,6 @@ namespace NDepend.Path {
          return filePath;
       }
       #endregion string to IPath extension methods
-
-
-
-
 
       #region string to IPath TryGet...Path extension methods, with failureReason
       //---------------------------------------------------
@@ -451,7 +431,6 @@ namespace NDepend.Path {
          return true;
       }
 
-
       ///<summary>
       ///Try get a new <see cref="IAbsoluteDirectoryPath"/> object from this string.
       ///</summary>
@@ -468,7 +447,6 @@ namespace NDepend.Path {
          return true;
       }
 
-
       ///<summary>
       ///Try get a new <see cref="IAbsoluteDirectoryPath"/> object from this string.
       ///</summary>
@@ -484,7 +462,6 @@ namespace NDepend.Path {
          relativeDirectoryPath = new RelativeDirectoryPath(pathString);
          return true;
       }
-
 
       ///<summary>
       ///Try get a new <see cref="IEnvVarDirectoryPath"/> object from this string.
@@ -505,8 +482,6 @@ namespace NDepend.Path {
          return true;
       }
 
-
-
       ///<summary>
       ///Try get a new <see cref="IVariableDirectoryPath"/> object from this string.
       ///</summary>
@@ -522,7 +497,6 @@ namespace NDepend.Path {
          variableDirectoryPath = new VariableDirectoryPath(pathString);
          return true;
       }
-
 
       ///<summary>
       ///Try get a new <see cref="IDirectoryPath"/> object from this string.
@@ -553,7 +527,6 @@ namespace NDepend.Path {
             return true;
          }
 
-         
          var b = pathString.IsValidDirectoryPath(out failureReason);
          Debug.Assert(!b);
          failureReason = @"The parameter pathString is not a valid directory path.
@@ -589,7 +562,7 @@ namespace NDepend.Path {
             filePath = pathString.ToVariableFilePath();
             return true;
          }
-         
+
          var b = pathString.IsValidFilePath(out failureReason);
          Debug.Assert(!b);
          failureReason = @"The parameter pathString is not a valid file path.
@@ -598,10 +571,6 @@ namespace NDepend.Path {
       }
 
       #endregion string to IPath TryGet...Path extension methods, with failureReason
-
-
-
-
 
       #region string to IPath TryGet...Path extension methods, withOUT failureReason
       //---------------------------------------------------
@@ -661,7 +630,6 @@ namespace NDepend.Path {
          return pathString.TryGetVariableFilePath(out variableFilePath, out failureReasonUnused);
       }
 
-
       ///<summary>
       ///Try get a new <see cref="IAbsoluteDirectoryPath"/> object from this string.
       ///</summary>
@@ -674,7 +642,6 @@ namespace NDepend.Path {
          return pathString.TryGetAbsoluteDirectoryPath(out absoluteDirectoryPath, out failureReasonUnused);
       }
 
-
       ///<summary>
       ///Try get a new <see cref="IAbsoluteDirectoryPath"/> object from this string.
       ///</summary>
@@ -686,7 +653,6 @@ namespace NDepend.Path {
          string failureReasonUnused;
          return pathString.TryGetRelativeDirectoryPath(out relativeDirectoryPath, out failureReasonUnused);
       }
-
 
       ///<summary>
       ///Try get a new <see cref="IEnvVarDirectoryPath"/> object from this string.
@@ -703,8 +669,6 @@ namespace NDepend.Path {
          return pathString.TryGetEnvVarDirectoryPath(out envVarDirectoryPath, out failureReasonUnused);
       }
 
-
-
       ///<summary>
       ///Try get a new <see cref="IVariableDirectoryPath"/> object from this string.
       ///</summary>
@@ -716,7 +680,6 @@ namespace NDepend.Path {
          string failureReasonUnused;
          return pathString.TryGetVariableDirectoryPath(out variableDirectoryPath, out failureReasonUnused);
       }
-
 
       ///<summary>
       ///Try get a new <see cref="IDirectoryPath"/> object from this string.
@@ -744,10 +707,6 @@ namespace NDepend.Path {
 
       #endregion string to IPath TryGet...Path extension methods, withOUT failureReason
 
-
-
-
-
       #region IsValidFile / IsValidDirectory   don't ask for the kind (Absolute/Relative/EnvVar)
       //----------------------------------------
       //
@@ -771,7 +730,6 @@ namespace NDepend.Path {
          return IsValidFilePath(pathString, out reasonUnused);
       }
 
-
       ///<summary>
       ///Determine whether this string is a valid file path or not.
       ///</summary>
@@ -789,7 +747,7 @@ namespace NDepend.Path {
          if (!pathString.TryGetNotNullNormalizedPath(out pathStringNormalized, out failureReason)) {
             return false;
          }
-        
+
          if (pathStringNormalized.IsValidRelativeFilePath()) { return true; }
          if (pathStringNormalized.IsValidAbsoluteFilePath()) { return true; }
          if (pathStringNormalized.IsValidEnvVarFilePath()) { return true; }
@@ -798,9 +756,6 @@ namespace NDepend.Path {
          failureReason = @"The string """ + pathString + @""" is not a valid file path.";
          return false;
       }
-
-
-
 
       ///<summary>
       ///Determine whether this string is a valid directory path or not.
@@ -817,7 +772,6 @@ namespace NDepend.Path {
          string reasonUnused;
          return IsValidDirectoryPath(pathString, out reasonUnused);
       }
-
 
       ///<summary>
       ///Determine whether this string is a valid directory path or not.
@@ -847,13 +801,6 @@ namespace NDepend.Path {
       }
       #endregion IsValidFile / IsValidDirectory   don't ask for the kind (Absolute/Relative/EnvVar)
 
-
-
-
-
-
-
-
       #region IsValidDirectory Absolute/Relative/EnvVar/Variable
       //-------------------------------------------------------------------------------------------
       //
@@ -877,7 +824,6 @@ namespace NDepend.Path {
          return IsValidAbsoluteDirectoryPath(pathString, out reasonUnused);
       }
 
-
       ///<summary>
       ///Determine whether this string is a valid absolute directory path or not.
       ///</summary>
@@ -897,7 +843,7 @@ namespace NDepend.Path {
          }
 
          if (MiscHelpers.IsURLPath(pathStringNormalized)) {
-            failureReason = @"URL paths are not accepted as absolute path.";
+            failureReason = "URL paths are not accepted as absolute path.";
             return false;
          }
 
@@ -917,8 +863,6 @@ namespace NDepend.Path {
          failureReason = null;
          return true;
       }
-
-
 
       ///<summary>
       ///Determine whether this string is a valid relative directory path or not.
@@ -956,7 +900,7 @@ namespace NDepend.Path {
             failureReason = "The parameter pathString is not a valid relative path.";
             return false;
          }
-          
+
 #if DEBUG // TryResolveInnerSpecialDir() cannot returns false for a relative path, 
           // just assert this in DEBUG mode!
          if (AbsoluteRelativePathHelpers.ContainsInnerSpecialDir(pathStringNormalized)) {
@@ -984,7 +928,6 @@ namespace NDepend.Path {
          return IsValidEnvVarDirectoryPath(pathString, out reasonUnused);
       }
 
-
       ///<summary>
       ///Determine whether this string is a valid directory path prefixed with an environment variable or not.
       ///</summary>
@@ -1001,7 +944,7 @@ namespace NDepend.Path {
          if (!pathString.TryGetNotNullNormalizedPath(out pathStringNormalized, out failureReason)) {
             return false;
          }
-  
+
          if (!MiscHelpers.IsAnEnvVarPath(pathStringNormalized)) {
             failureReason = @"The parameter pathString is not prefixed with an environment variable (like ""%USERPROFILE%"")";
             return false;
@@ -1017,7 +960,6 @@ namespace NDepend.Path {
          return true;
       }
 
-
       ///<summary>
       ///Determine whether this string is a valid directory path that contains variables.
       ///</summary>
@@ -1032,7 +974,6 @@ namespace NDepend.Path {
          string reasonUnused;
          return IsValidVariableDirectoryPath(pathString, out reasonUnused);
       }
-
 
       ///<summary>
       ///Determine whether this string is a valid directory path that contains variables.
@@ -1067,11 +1008,6 @@ namespace NDepend.Path {
       }
 
       #endregion IsValidDirectory Absolute/Relative/EnvVar/Variable
-
-
-
-
-
 
       #region IsValidFile  Absolute/Relative/EnvVar/Variable
       //-------------------------------------------------------------------------------------------
@@ -1123,7 +1059,7 @@ namespace NDepend.Path {
          Debug.Assert(fileName != null);
          Debug.Assert(fileName.Length > 0);
          Debug.Assert(fileName != AbsoluteRelativePathHelpers.PARENT_DIR_DOUBLEDOT);
-         Debug.Assert(fileName != AbsoluteRelativePathHelpers.CURRENT_DIR_SINGLEDOT);         
+         Debug.Assert(fileName != AbsoluteRelativePathHelpers.CURRENT_DIR_SINGLEDOT);
          failureReason = null;
          return true;
       }
@@ -1174,8 +1110,6 @@ namespace NDepend.Path {
          return IsThisValidDirectoryPathAValidFilePath(pathStringNormalized, out fileNameUnused, out failureReason);
       }
 
-
-
       ///<summary>
       ///Determine whether this string is a valid relative file path or not.
       ///</summary>
@@ -1210,9 +1144,6 @@ namespace NDepend.Path {
          return IsThisValidDirectoryPathAValidFilePath(pathString, out fileNameUnused, out failureReason);
       }
 
-
-
-
       ///<summary>
       ///Determine whether this string is a valid file path prefixed with an environment variable or not.
       ///</summary>
@@ -1227,7 +1158,6 @@ namespace NDepend.Path {
          string reasonUnused;
          return IsValidEnvVarFilePath(pathString, out reasonUnused);
       }
-
 
       ///<summary>
       ///Determine whether this string is a valid file path prefixed with an environment variable or not.
@@ -1249,8 +1179,6 @@ namespace NDepend.Path {
          return IsThisValidDirectoryPathAValidFilePath(pathString, out fileNameUnused, out failureReason);
       }
 
-
-
       ///<summary>
       ///Determine whether this string is a valid file that contains variables, or not.
       ///</summary>
@@ -1265,7 +1193,6 @@ namespace NDepend.Path {
          string reasonUnused;
          return IsValidVariableFilePath(pathString, out reasonUnused);
       }
-
 
       ///<summary>
       ///Determine whether this string is a valid file that contains variables, or not.
