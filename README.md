@@ -147,9 +147,7 @@ Assert.IsTrue(new[] {
 Assert.IsTrue(commonRootDir.ToString() == @"C:\Dir");
 ```
 
-### Possibility to work with IFilePath IDirectoryPath
-
-### and be abstracted from the underlying kind (Absolute/Relative/EnvVar/Variable)
+### Possibility to work with IFilePath IDirectoryPath and be abstracted from the underlying kind (Absolute/Relative/EnvVar/Variable)
 
 ```csharp
 foreach (var s in new[] {
